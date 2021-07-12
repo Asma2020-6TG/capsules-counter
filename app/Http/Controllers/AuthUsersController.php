@@ -14,7 +14,7 @@ class AuthUsersController extends Controller
     {
         $request->validate([
            'name' => 'required|string',
-           'email' => 'required|string|unique:users',
+           'email' => 'required|email|unique:users',
            'password' => 'required|string|min:7 '
         ]);
         $user = new User([
@@ -61,14 +61,4 @@ class AuthUsersController extends Controller
         return response()->json(['message' => 'You are logged out'],200);
     }
 
-    public function changePassword()
-    {
-
-        return response()->json(['message' => 'Your password had changed successfully'],200);
-    }
-
-    public function resetPassword()
-    {
-
-    }
 }
